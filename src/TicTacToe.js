@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
-import { findBestMove, evaluate, isMovesLeft, Move } from './game';
+import { findBestMove, evaluate, isMovesLeft, Move } from '../src/game';
 
 
 export default function TicTacToe() {
@@ -68,15 +68,15 @@ export default function TicTacToe() {
         let bestMove = new Move();
         bestMove = findBestMove(board)
         debugger
-        return {row: bestMove.row, column: bestMove.col};
+        return { row: bestMove.row, column: bestMove.col };
     }
 
     function checkWinner() {
         let result = evaluate(board);
         if (result === 10)
-            setWinner(players?.HUMAN?.NAME)
-        else if (result === -10)
             setWinner(players?.CPU?.NAME)
+        else if (result === -10)
+            setWinner(players?.HUMAN?.NAME)
         else
             if (isMovesLeft(board))
                 setWinner(null);
@@ -89,7 +89,6 @@ export default function TicTacToe() {
         sleep(1000);
         const cPUMove = getCPUTurn();
         board[cPUMove['row']][cPUMove['column']] = players?.CPU?.SYM;
-        debugger
         setBoard((board) => [...board]);
         checkWinner();
         setIsCPUNext(false);
@@ -105,16 +104,14 @@ export default function TicTacToe() {
     }
 
     return (
-        <div>
+        <div style={{ width: "267px", margin: "auto", fontSize: "30px", textAlign: "center", paddingTop: "70px" }}>
             <div>{!winner && displayTurn()}</div>
-            {/** previous JSX code here **/}
             {winner && <h2>{displayWinner()}</h2>}
             {winner && (
                 <button className="video_game_button" onClick={playAgainFn}>
                     Play Again
                 </button>
             )}
-
             <div className="container">
                 <div className="col">
                     <span onClick={() => playFn(0, 0)} className="cell">
