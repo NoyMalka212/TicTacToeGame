@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import "./styles.css";
-import { findBestMove, evaluate, isMovesLeft, Move } from '../src/game';
+import "../styles.css";
+import { findBestMove, evaluate, isMovesLeft, Move } from './game';
 
 
 export default function TicTacToe() {
